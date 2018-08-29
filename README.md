@@ -30,12 +30,10 @@ ubuntu@ip-172-26-6-0:~$ sudo ufw status
 Status: active
 
 To                         Action      From
---                         ------      ----
-22                         ALLOW       Anywhere                  
+--                         ------      ----              
 2200/tcp                   ALLOW       Anywhere                  
 80/tcp                     ALLOW       Anywhere                  
-123                        ALLOW       Anywhere                  
-22 (v6)                    ALLOW       Anywhere (v6)             
+123                        ALLOW       Anywhere                              
 2200/tcp (v6)              ALLOW       Anywhere (v6)             
 80/tcp (v6)                ALLOW       Anywhere (v6)             
 123 (v6)                   ALLOW       Anywhere (v6)
@@ -103,6 +101,24 @@ ubuntu@ip-172-26-6-0:sudo service apache2 restart
 ```
 
 9. Update the OAuth 2.0 client IDs on Google API with vm ip address with xip.io at the end 
+
+10. Update all packages
+```
+ubuntu@ip-172-26-6-0:sudo apt-get update
+```
+```
+ubuntu@ip-172-26-6-0:sudo apt-get upgrade
+```
+11. changing port ssh port to 2200
+```
+grader@ip-172-26-6-0:~$ cat /etc/ssh/sshd_config | grep Port
+Port 2200
+```
+12. PermitRootLogin to no
+```
+grader@ip-172-26-6-0:~$ cat /etc/ssh/sshd_config | grep PermitRootLogin
+PermitRootLogin no
+```
 
 ### Third party resources used
 http://flask.pocoo.org/docs/1.0/deploying/mod_wsgi/
